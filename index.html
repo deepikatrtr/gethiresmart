@@ -66,7 +66,7 @@
       background: rgba(10, 15, 28, 0.95);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1rem 2rem;
+      padding: 1rem 0.5rem;
       z-index: 1000;
       transition: all 0.3s ease;
     }
@@ -130,6 +130,109 @@
 
     .nav-links a:hover::after {
       width: 100%;
+    }
+
+    /* Mobile Menu Button - Initially Hidden */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .mobile-menu-btn.active {
+      transform: rotate(90deg);
+    }
+
+    /* Mobile Navigation Overlay - Initially Hidden */
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(10, 15, 28, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .mobile-nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mobile-nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .mobile-nav-links a:hover::before {
+      left: 100%;
+    }
+
+    .mobile-nav-links a:hover {
+      color: #ffffff;
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(56, 189, 248, 0.3);
+    }
+
+    /* Close button for mobile menu */
+    .mobile-close-btn {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-close-btn:hover {
+      transform: rotate(90deg);
+      color: #38bdf8;
     }
 
     /* Hero Section */
@@ -545,32 +648,6 @@
       transform: translateY(0);
     }
 
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats,
-      .process,
-      .cta-section {
-        margin: 1rem;
-      }
-    }
-
     .blog-grid {
       max-width: 1200px;
       margin: 0 auto;
@@ -607,7 +684,6 @@
       font-size: 0.9rem;
       margin: 1rem 0;
     }
-
 
     .founders-grid {
       max-width: 1200px;
@@ -653,7 +729,6 @@
       line-height: 1.6;
     }
 
-
     .contact-form {
       max-width: 600px;
       margin: 0 auto;
@@ -685,7 +760,6 @@
     textarea {
       resize: vertical;
     }
-
 
     .job-application-form {
       max-width: 800px;
@@ -738,30 +812,150 @@
       min-height: 150px;
     }
 
-
     .thank-you-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(56, 189, 248, 0.9);
-    color: white;
-    padding: 2rem;
-    border-radius: 20px;
-    text-align: center;
-    z-index: 10000;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(56, 189, 248, 0.9);
+      color: white;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      z-index: 10000;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-.thank-you-message h2 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
+    .thank-you-message h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
 
-.thank-you-message p {
-    margin-bottom: 0.5rem;
-}
+    .thank-you-message p {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Tablet Responsiveness */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Mobile Responsiveness - FIXED: Only applies to screens 768px and below */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        padding-top: 29px;
+      }
+
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero .description {
+        font-size: 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .services {
+        padding: 0rem 2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .process,
+      .cta-section {
+        margin: 1rem;
+        padding: 3rem 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin: 1rem 0rem 1rem 0rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .founders-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .job-application-form {
+        padding: 1rem;
+        margin: 1rem;
+      }
+    }
+
+    /* Very small screens */
+    @media (max-width: 480px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+
+      .logo {
+        font-size: 1.4rem;
+      }
+
+      .logo span {
+        font-size: 16px !important;
+      }
+
+      .hero {
+        padding: 0 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
   </style>
 </head>
 
@@ -772,9 +966,12 @@
   <nav>
     <div class="nav-container">
       <div class="logo">
-        <img src="company logoo.PNG" alt="GetHireSmart Logo" style="height: 40px; vertical-align: middle; font-size: 10px; border-radius: 10px;" />
+        <img src="company logoo.PNG" alt="GetHireSmart Logo"
+          style="height: 40px; vertical-align: middle; font-size: 10px; border-radius: 10px;" />
         <span style="font-size: 20px; margin-left: 8px;">GetHireSmart</span>
       </div>
+
+      <!-- Desktop Navigation -->
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
@@ -782,6 +979,23 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay">
+      <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
+      <div class="mobile-nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </nav>
 
@@ -794,7 +1008,7 @@
       <p class="description">We connect visionary companies with extraordinary talent, driving innovation and growth
         through precision placement and executive search excellence.</p>
       <div class="cta-buttons">
-        <a href="#contact" class="btn-primary">Start Your Search</a>
+        <a href="#apply" class="btn-primary">Start Your Search</a>
         <a href="#services" class="btn-secondary">Explore Services</a>
       </div>
     </div>
@@ -906,38 +1120,43 @@
   </section>
 
   <!-- About Section -->
-<section class="about animate-on-scroll" id="about">
-  <div class="section-header">
-    <h2 class="section-title">About GetHireSmart</h2>
-    <p class="section-subtitle">Your trusted partner in strategic talent acquisition</p>
-  </div>
-  <div class="about-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
-      <div>
-        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #38bdf8;">Our Story</h3>
-        <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 1.5rem;">
-          Founded with a vision to revolutionize recruitment, GetHireSmart has been at the forefront of connecting exceptional talent with forward-thinking organizations. Our expertise spans across industries, delivering customized solutions that drive business growth.
-        </p>
-        <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-          We believe that the right hire can transform an organization, and we're committed to making that transformation happen through our strategic approach to talent acquisition.
-        </p>
-      </div>
-      <div>
-        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #38bdf8;">Our Mission</h3>
-        <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 1.5rem;">
-          To bridge the gap between exceptional talent and visionary organizations, creating lasting partnerships that drive innovation and success in today's competitive marketplace.
-        </p>
-        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #38bdf8;">Why Choose Us?</h3>
-        <ul style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
-          <li>Industry expertise across multiple sectors</li>
-          <li>Personalized approach to every search</li>
-          <li>Extensive network of top-tier professionals</li>
-          <!-- <li>Proven track record of successful placements</li> -->
-        </ul>
+  <section class="about animate-on-scroll" id="about">
+    <div class="section-header">
+      <h2 class="section-title">About GetHireSmart</h2>
+      <p class="section-subtitle">Your trusted partner in strategic talent acquisition</p>
+    </div>
+    <div class="about-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+        <div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #38bdf8;">Our Story</h3>
+          <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 1.5rem;">
+            Founded with a vision to revolutionize recruitment, GetHireSmart has been at the forefront of connecting
+            exceptional talent with forward-thinking organizations. Our expertise spans across industries, delivering
+            customized solutions that drive business growth.
+          </p>
+          <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+            We believe that the right hire can transform an organization, and we're committed to making that
+            transformation happen through our strategic approach to talent acquisition.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #38bdf8;">Our Mission</h3>
+          <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; margin-bottom: 1.5rem;">
+            To bridge the gap between exceptional talent and visionary organizations, creating lasting partnerships that
+            drive innovation and success in today's competitive marketplace.
+          </p>
+          <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #38bdf8;">Why Choose Us?</h3>
+          <ul style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
+            <li>Industry expertise across multiple sectors</li>
+            <li>Personalized approach to every search</li>
+            <li>Extensive network of top-tier professionals</li>
+            <!-- <li>Proven track record of successful placements</li> -->
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
   <!-- Blog Section -->
@@ -972,11 +1191,12 @@
       <h2 class="section-title">Application Form</h2>
       <p class="section-subtitle">Submit your application for the selected position</p>
     </div>
-<form action="https://formsubmit.co/gethiresmart@gmail.com" method="POST" class="job-application-form" enctype="multipart/form-data">
-  <input type="hidden" name="_subject" value="New Job Application Submission">
-  <input type="hidden" name="_captcha" value="false">
- <input type="hidden" name="_next" value="https://gethiresmart.com/?submitted=true">
-  <input type="hidden" name="_template" value="box">
+    <form action="https://formsubmit.co/gethiresmart@gmail.com" method="POST" class="job-application-form"
+      enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New Job Application Submission">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://gethiresmart.com/?submitted=true">
+      <input type="hidden" name="_template" value="box">
       <!-- Personal Information -->
       <div class="form-section">
         <h3>Personal Information</h3>
@@ -1057,7 +1277,7 @@
       </article>
       <article class="founder-card">
 
-        <h3>Deepika.T.R</h3>
+        <h3>T.R.Deepika</h3>
         <p class="founder-title">Co-founder</p>
         <p class="founder-description">Expert in strategic organizational development.</p>
       </article>
@@ -1071,11 +1291,12 @@
       <p class="section-subtitle">Ready to transform your organization?</p>
     </div>
     <div class="contact-container">
-  <form action="https://formsubmit.co/gethiresmart@gmail.com" method="POST" class="job-application-form" enctype="multipart/form-data">
-  <input type="hidden" name="_subject" value="New Job Application Submission">
-  <input type="hidden" name="_captcha" value="false">
- <input type="hidden" name="_next" value="https://gethiresmart.com/?submitted=true">
-  <input type="hidden" name="_template" value="box">
+      <form action="https://formsubmit.co/gethiresmart@gmail.com" method="POST" class="job-application-form"
+        enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="New Job Application Submission">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://gethiresmart.com/?submitted=true">
+        <input type="hidden" name="_template" value="box">
         <div class="form-group">
           <input type="text" name="name" required placeholder="Full Name">
         </div>
@@ -1111,14 +1332,13 @@
         <h3>Contact</h3>
         <p>📧 gethiresmart@gmail.com</p>
         <p>📞 +91 9380442869</p>
-      <p>📍 Mysuru, Karnataka, India</p>
+        <p>📍 Mysuru, Karnataka, India</p>
 
       </div>
       <div class="footer-section">
         <h3>Follow Us</h3>
-        <p><a href="#">LinkedIn</a></p>
-        <p><a href="#">Twitter</a></p>
-        <p><a href="#">Instagram</a></p>
+        <p><a href="https://www.linkedin.com/company/gethiresmart/" target="_blank">LinkedIn</a></p>
+        <p><a href="https://www.instagram.com/get_hire_smart?igsh=OW54OW1xbGF4ZzU5" target="_blank">Instagram</a></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1127,148 +1347,203 @@
   </footer>
 
   <script>
-// Keep all existing code
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    // Mobile Navigation Functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navOverlay = document.getElementById('navOverlay');
+    const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+    // Open mobile menu
+    mobileMenuBtn.addEventListener('click', () => {
+      navOverlay.classList.add('active');
+      mobileMenuBtn.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    });
+
+    // Close mobile menu
+    const closeMobileMenu = () => {
+      navOverlay.classList.remove('active');
+      mobileMenuBtn.classList.remove('active');
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    };
+
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+
+    // Close menu when clicking on overlay background
+    navOverlay.addEventListener('click', (e) => {
+      if (e.target === navOverlay) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close menu when clicking on navigation links
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+        // Smooth scroll to section
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 300);
+        }
+      });
+    });
+
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+
+
+
+    // Keep all existing code
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
+      });
     });
-});
 
-// Keep existing scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    // Keep existing scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
+          entry.target.classList.add('animated');
         }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
     });
-}, observerOptions);
-document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    observer.observe(el);
-});
 
-// Keep existing navbar behavior
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
+    // Keep existing navbar behavior
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 100) {
         nav.style.background = 'rgba(10, 15, 28, 0.98)';
-    } else {
+      } else {
         nav.style.background = 'rgba(10, 15, 28, 0.95)';
-    }
-});
+      }
+    });
 
-// Keep existing counter animation
-const animateCounters = () => {
-    const counters = document.querySelectorAll('.stat-number');
-    counters.forEach(counter => {
+    // Keep existing counter animation
+    const animateCounters = () => {
+      const counters = document.querySelectorAll('.stat-number');
+      counters.forEach(counter => {
         const target = parseInt(counter.textContent.replace(/\\D/g, ''));
         const suffix = counter.textContent.replace(/[0-9]/g, '');
         let current = 0;
         const increment = target / 50;
         const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                counter.textContent = Math.floor(current) + suffix;
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target + suffix;
-            }
+          if (current < target) {
+            current += increment;
+            counter.textContent = Math.floor(current) + suffix;
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target + suffix;
+          }
         };
         updateCounter();
-    });
-};
+      });
+    };
 
-// Keep existing stats section observer
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    // Keep existing stats section observer
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-            animateCounters();
-            statsObserver.unobserve(entry.target);
+          animateCounters();
+          statsObserver.unobserve(entry.target);
         }
+      });
     });
-});
-const statsSection = document.querySelector('.stats');
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
 
-// Keep existing service cards animation
-const serviceCards = document.querySelectorAll('.service-card');
-serviceCards.forEach((card, index) => {
-    card.style.animationDelay = `${index * 0.1}s`;
-});
+    // Keep existing service cards animation
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+    });
 
-// Keep existing parallax effect
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('.bg-animation');
-    const speed = scrolled * 0.5;
-    parallax.style.transform = `translateY(${speed}px)`;
-});
+    // Keep existing parallax effect
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.bg-animation');
+      const speed = scrolled * 0.5;
+      parallax.style.transform = `translateY(${speed}px)`;
+    });
 
-// FIXED: Contact Form Implementation
-const contactForm = document.querySelector('.contact form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    // FIXED: Contact Form Implementation
+    const contactForm = document.querySelector('.contact form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (e) {
         // Validate form before submission
         const name = this.querySelector('input[name="name"]').value;
         const email = this.querySelector('input[name="email"]').value;
         const message = this.querySelector('textarea[name="message"]').value;
-        
+
         if (!name || !email || !message) {
-            e.preventDefault();
-            alert('Please fill in all required fields.');
-            return;
+          e.preventDefault();
+          alert('Please fill in all required fields.');
+          return;
         }
-        
+
         // Show loading state
         const submitButton = this.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
-        
+
         // The form will submit naturally to FormSubmit
         // FormSubmit will redirect back to the same page with thank you message
-    });
-}
+      });
+    }
 
-// FIXED: Job Application Form Implementation
-const jobForm = document.querySelector('#apply form');
-if (jobForm) {
-    jobForm.addEventListener('submit', function(e) {
+    // FIXED: Job Application Form Implementation
+    const jobForm = document.querySelector('#apply form');
+    if (jobForm) {
+      jobForm.addEventListener('submit', function (e) {
         // Validate file size before submission
         const resumeInput = this.querySelector('input[name="resume"]');
         if (resumeInput && resumeInput.files && resumeInput.files[0]) {
-            const fileSizeLimit = 2 * 1024 * 1024; // 2MB limit
-            
-            if (resumeInput.files[0].size > fileSizeLimit) {
-                e.preventDefault();
-                alert('Resume file size exceeds 2MB limit. Please upload a smaller file.');
-                return;
-            }
+          const fileSizeLimit = 2 * 1024 * 1024; // 2MB limit
+
+          if (resumeInput.files[0].size > fileSizeLimit) {
+            e.preventDefault();
+            alert('Resume file size exceeds 2MB limit. Please upload a smaller file.');
+            return;
+          }
         }
-        
+
         // Show loading state
         const submitButton = this.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         submitButton.disabled = true;
         submitButton.textContent = 'Submitting Application...';
-        
+
         // The form will submit naturally to FormSubmit
         // FormSubmit will redirect back to the same page with thank you message
-    });
-}
-</script>
+      });
+    }
+  </script>
 </body>
 
 </html>
