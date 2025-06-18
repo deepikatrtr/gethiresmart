@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms and Conditions - GetHireSmart</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0f1c;
+      color: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Animated Background */
+   .bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: linear-gradient(135deg, #0a0f1c 0%, #1a2332 50%, #2d3b52 100%);
+}
+
+    .bg-animation::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      33% {
+        transform: translate(-30%, -60%) rotate(120deg);
+      }
+      66% {
+        transform: translate(-70%, -40%) rotate(240deg);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 28, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 0.5rem;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .logo::before {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #8b5cf6);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .mobile-menu-btn.active {
+      transform: rotate(90deg);
+    }
+
+    /* Mobile Navigation Overlay */
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(10, 15, 28, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .mobile-nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mobile-nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .mobile-nav-links a:hover::before {
+      left: 100%;
+    }
+
+    .mobile-nav-links a:hover {
+      color: #ffffff;
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .mobile-close-btn {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-close-btn:hover {
+      transform: rotate(90deg);
+      color: #38bdf8;
+    }
+
+    /* Main Content */
+   .main-content {
+  margin-top: 100px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 100px auto 4rem auto;
+}
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+    }
+
+    .page-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #38bdf8, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .policy-content {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .policy-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .policy-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .policy-content p {
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+    }
+
+    .policy-content ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .policy-content li {
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    .policy-content strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .contact-info {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-info a {
+      color: #38bdf8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #ffffff;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .back-to-home {
+      display: inline-block;
+      background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 2rem 0;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .back-to-home::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .back-to-home:hover::before {
+      left: 100%;
+    }
+
+    .back-to-home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 3rem 2rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #38bdf8;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      line-height: 1.8;
+    }
+
+    .footer-section a:hover {
+      color: #38bdf8;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: #38bdf8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .main-content {
+        margin-top: 100px;
+        padding: 1rem;
+      }
+
+      .policy-content {
+        padding: 2rem;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+      }
+
+      .page-subtitle {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+
+      .logo {
+        font-size: 1.4rem;
+      }
+
+      .policy-content {
+        padding: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .animate-on-scroll {
+      /* opacity: 0; */
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-animation"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="company logoo.PNG" alt="GetHireSmart Logo"
+          style="height: 40px; vertical-align: middle; border-radius: 10px;" />
+        <span style="font-size: 20px; margin-left: 8px;">GetHireSmart</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#process">Process</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay">
+      <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
+      <div class="mobile-nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header animate-on-scroll">
+      <h1 class="page-title">Terms and Conditions</h1>
+      <p class="page-subtitle">Please read these terms carefully before using our services. By accessing our website, you agree to be bound by these conditions.</p>
+    </div>
+
+    <!-- Terms and Conditions Content -->
+    <div class="policy-content animate-on-scroll">
+      <div class="policy-section">
+        <h2 class="section-title">1. Introduction</h2>
+        <p>Welcome to GetHireSmart. This website is operated by GetHireSmart, a recruitment and talent consulting company based in Mysuru and Bangalore, India. These Terms and Conditions apply to all visitors, users, clients, and candidates who access or use our services through this website.</p>
+        <p>By accessing or using our website (www.gethiresmart.com), you agree to comply with and be bound by the following Terms and Conditions. If you do not agree with any part of these terms, please do not use our website or services.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">2. Services Offered</h2>
+        <p>GetHireSmart provides comprehensive recruitment and talent consulting services, including:</p>
+        <ul>
+          <li><strong>Executive Search:</strong> High-level executive and leadership recruitment</li>
+          <li><strong>Permanent Placement Services:</strong> Full-time employee recruitment across various industries</li>
+          <li><strong>Contract Staffing:</strong> Temporary and project-based staffing solutions</li>
+          <li><strong>Talent Mapping and Consultation:</strong> Strategic talent planning and market analysis</li>
+          <li><strong>End-to-End Recruitment Solutions:</strong> Complete hiring process management</li>
+          <li><strong>Connecting Clients and Candidates:</strong> Professional networking and matching services</li>
+        </ul>
+        <div class="highlight-box">
+          <p><strong>Service Area:</strong> All services are offered exclusively within India and are subject to Indian employment laws and regulations.</p>
+        </div>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">3. Eligibility</h2>
+        <p>By using this website and our services, you confirm that:</p>
+        <ul>
+          <li>You are at least 18 years of age or have reached the legal age of majority in your jurisdiction</li>
+          <li>You are legally allowed to enter into a binding agreement</li>
+          <li>You are located in India or seeking employment/talent within India</li>
+          <li>You have the authority to bind your organization (if representing a company)</li>
+          <li>All information provided is accurate, current, and complete</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">4. Acceptable Use of the Website</h2>
+        <p>You agree to use our website responsibly and in accordance with these terms. You agree <strong>NOT</strong> to:</p>
+        <ul>
+          <li>Use this website for any unlawful, harmful, or prohibited purposes</li>
+          <li>Misrepresent your identity, qualifications, or submit false information</li>
+          <li>Attempt to gain unauthorized access to any part of the site, servers, or systems</li>
+          <li>Upload or transmit viruses, malware, or any harmful code</li>
+          <li>Interfere with or disrupt the website's functionality or security</li>
+          <li>Use automated systems (bots, scrapers) to access the website</li>
+          <li>Harvest or collect user information without permission</li>
+          <li>Violate any applicable local, national, or international laws</li>
+          <li>Infringe upon intellectual property rights</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">5. Fees and Payment Policy</h2>
+        <div class="highlight-box">
+          <p><strong>Important Notice:</strong> GetHireSmart does not currently collect any payments or offer paid subscriptions through this website. We do not process any online payments or financial transactions.</p>
+        </div>
+        <p>Regarding fees and payments:</p>
+        <ul>
+          <li>All service fees and payment terms are communicated directly via email or official business channels</li>
+          <li>Any applicable fees will be clearly discussed and agreed upon before service commencement</li>
+          <li>Payment arrangements are handled through traditional business-to-business processes</li>
+          <li>We reserve the right to modify our fee structure with appropriate notice to clients</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">6. Intellectual Property Rights</h2>
+        <p>All content on this website is protected by intellectual property laws:</p>
+        <ul>
+          <li><strong>Ownership:</strong> All text, logos, graphics, images, design elements, and software are the exclusive property of GetHireSmart</li>
+          <li><strong>Trademarks:</strong> GetHireSmart name, logo, and branding are registered trademarks</li>
+          <li><strong>Copyright:</strong> All original content is protected under copyright law</li>
+          <li><strong>Usage Restrictions:</strong> No content may be copied, reproduced, distributed, or used without written permission</li>
+          <li><strong>User Content:</strong> By submitting content (resumes, profiles), you grant us necessary rights to provide our services</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">7. Recruitment Services Disclaimer</h2>
+        <div class="highlight-box">
+          <p><strong>Important Disclaimer:</strong> While we strive to provide excellent recruitment services and match the right candidates with suitable opportunities, certain outcomes cannot be guaranteed.</p>
+        </div>
+        <p>We do <strong>NOT</strong> guarantee:</p>
+        <ul>
+          <li><strong>Employment Placement:</strong> Successful job placement for any candidate</li>
+          <li><strong>Candidate Suitability:</strong> Perfect match or performance of candidates in roles</li>
+          <li><strong>Hiring Success:</strong> That clients will find suitable candidates</li>
+          <li><strong>Timeline Commitments:</strong> Specific timeframes for placement success</li>
+          <li><strong>Salary Negotiations:</strong> Specific compensation outcomes</li>
+        </ul>
+        <p><strong>Client and Candidate Responsibilities:</strong></p>
+        <ul>
+          <li>Clients and candidates are responsible for their own due diligence</li>
+          <li>Background verification and reference checks are recommended</li>
+          <li>Final hiring decisions rest solely with the client organization</li>
+          <li>Candidates should verify job details and company credentials independently</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">8. Limitation of Liability</h2>
+        <p>GetHireSmart's liability is limited as follows:</p>
+        <ul>
+          <li><strong>No Indirect Damages:</strong> We shall not be liable for any indirect, incidental, special, consequential, or punitive damages</li>
+          <li><strong>Website Use:</strong> Damages arising from your use or inability to use the website</li>
+          <li><strong>Service Decisions:</strong> Any decisions made based on content or services offered</li>
+          <li><strong>Third-Party actions:</strong> Actions or omissions of clients, candidates, or other third parties</li>
+          <li><strong>Data Loss:</strong> Loss of data or information</li>
+          <li><strong>Business Interruption:</strong> Any interruption of business or services</li>
+        </ul>
+        <div class="highlight-box">
+          <p><strong>Website Availability:</strong> We do not guarantee that the website will be error-free, uninterrupted, or always available. Maintenance and updates may cause temporary service disruptions.</p>
+        </div>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">9. Third-Party Links and Services</h2>
+        <p>Our website may contain links to third-party websites or services:</p>
+        <ul>
+          <li><strong>No Responsibility:</strong> We are not responsible for the content, privacy practices, or policies of external sites</li>
+          <li><strong>No Endorsement:</strong> Links do not constitute endorsement of third-party services</li>
+          <li><strong>User Discretion:</strong> You access third-party sites at your own risk</li>
+          <li><strong>Terms Apply:</strong> Third-party sites have their own terms and conditions</li>
+        </ul>
+        <p>We encourage you to review the privacy policies and terms of any third-party websites you visit.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">10. Modifications to Terms</h2>
+        <p>We reserve the right to modify these Terms and Conditions at any time:</p>
+        <ul>
+          <li><strong>Update Process:</strong> Changes will be posted on this page with a new effective date</li>
+          <li><strong>Notification:</strong> Significant changes may be communicated via email or website notice</li>
+          <li><strong>Continued Use:</strong> Your continued use of the site after changes constitutes acceptance</li>
+          <li><strong>Review Responsibility:</strong> You are responsible for regularly reviewing these terms</li>
+        </ul>
+        <p>If you do not agree with any modifications, you must discontinue use of our website and services.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">11. Termination</h2>
+        <p>These terms remain in effect until terminated:</p>
+        <ul>
+          <li><strong>User Termination:</strong> You may stop using our services at any time</li>
+          <li><strong>Our Right to Terminate:</strong> We may suspend or terminate access for terms violations</li>
+          <li><strong>Effect of Termination:</strong> Certain provisions survive termination (intellectual property, limitations of liability)</li>
+          <li><strong>Data Retention:</strong> We may retain certain information as required by law or business needs</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">12. Governing Law and Jurisdiction</h2>
+        <p>These Terms and Conditions are governed by Indian law:</p>
+        <ul>
+          <li><strong>Applicable Law:</strong> These terms shall be governed by and interpreted under the laws of India</li>
+          <li><strong>Jurisdiction:</strong> Any disputes will be subject to the exclusive jurisdiction of courts in Mysuru, Karnataka, India</li>
+          <li><strong>Language:</strong> In case of translation, the English version of these terms shall prevail</li>
+          <li><strong>Dispute Resolution:</strong> We encourage good-faith efforts to resolve disputes amicably before litigation</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">13. Contact Information</h2>
+        <p>If you have any questions, concerns, or require clarification about these Terms and Conditions, please contact us:</p>
+        <div class="contact-info">
+          <p><strong>GetHireSmart</strong></p>
+          <p>Email: <a href="mailto:gethiresmart@gmail.com">gethiresmart@gmail.com</a></p>
+        
+          <p>Phone: <a href="tel:+919380442869">+91 9380442869</a></p>
+          <p>Address: Mysuru, Karnataka, India</p>
+        </div>
+        <p>We aim to respond to all inquiries within 2-3 business days.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2 class="section-title">14. Severability</h2>
+        <p>If any provision of these Terms and Conditions is found to be invalid, illegal, or unenforceable, the remaining provisions shall continue in full force and effect. The invalid provision shall be replaced with a valid provision that most closely reflects the intent of the original.</p>
+      </div>
+
+      <div class="policy-section">
+        <p><strong>Effective Date:</strong> June 5, 2025</p>
+        <p><strong>Last Updated:</strong> June 5, 2025</p>
+        <p><strong>Version:</strong> 1.0</p>
+        
+        <a href="index.html" class="back-to-home">← Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>GetHireSmart</h3>
+        <p>Elite recruitment consultancy specializing in executive search and strategic talent acquisition across India.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Services</h3>
+        <p><a href="index.html#services">Executive Search</a></p>
+        <p><a href="index.html#services">Permanent Placement</a></p>
+        <p><a href="index.html#services">Contract Staffing</a></p>
+        <p><a href="index.html#services">Talent Consulting</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>📧 <a href="mailto:gethiresmart@gmail.com">gethiresmart@gmail.com</a></p>
+        <p>📞 <a href="tel:+919380442869">+91 9380442869</a></p>
+        <p>📍 Mysuru, Karnataka, India</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p><a href="https://www.linkedin.com/company/gethiresmart/" target="_blank">LinkedIn</a></p>
+        <p><a href="https://www.instagram.com/get_hire_smart?igsh=OW54OW1xbGF4ZzU5" target="_blank">Instagram</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 GetHireSmart. All rights reserved. | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms-of-service.html">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navOverlay = document.getElementById('navOverlay');
+    const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+    // Open mobile menu
+    mobileMenuBtn.addEventListener('click', () => {
+      navOverlay.classList.add('active');
+      mobileMenuBtn.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close mobile menu
+    const closeMobileMenu = () => {
+      navOverlay.classList.remove('active');
+      mobileMenuBtn.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    };
+
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+
+    // Close menu when clicking on overlay background
+    navOverlay.addEventListener('click', (e) => {
+      if (e.target === navOverlay) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close menu when clicking on navigation links
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Navbar scroll effects
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 100) {
+        nav.style.background = 'rgba(10, 15, 28, 0.98)';
+        nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+      } else {
+        nav.style.background = 'rgba(10, 15, 28, 0.95)';
+        nav.style.boxShadow = 'none';
+      }
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Parallax effect for background
+    let ticking = false;
+    
+    function updateParallax() {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.bg-animation');
+      const speed = scrolled * 0.2;
+      if (parallax) {
+        parallax.style.transform = `translateY(${speed}px)`;
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // Performance optimization - throttle scroll events
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(updateParallax, 10);
+    });
+  </script>
+</body>
+</html>
