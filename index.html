@@ -1186,14 +1186,14 @@
 
 
   
-  <!-- Job Application Form -->
+ <!-- Job Application Form -->
   <section class="job-application animate-on-scroll" id="apply">
     <div class="section-header">
       <h2 class="section-title">Application Form</h2>
       <p class="section-subtitle">Submit your application for the selected position</p>
     </div>
-   
-      <form action="https://formsubmit.co/ajax/gethiresmart@gmail.com" method="POST">
+    <form action="https://formsubmit.co/gethiresmart@gmail.com" method="POST" class="job-application-form"
+      enctype="multipart/form-data">
       <input type="hidden" name="_subject" value="New Job Application Submission">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://gethiresmart.com/?submitted=true">
@@ -1216,9 +1216,8 @@
       <div class="form-section">
         <h3>Resume Upload</h3>
         <div class="form-group file-upload">
-         <p style="color: rgba(255, 255, 255, 0.7); padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
-  📎 Please email your resume to: <a href="mailto:gethiresmart@gmail.com" style="color: #38bdf8;">gethiresmart@gmail.com</a> after submitting this form.
-</p>
+          <input type="file" name="resume" required accept=".pdf,.doc,.docx">
+          <p class="file-info">Accepted formats: PDF, DOC, DOCX (Max size: 2MB)</p>
         </div>
       </div>
 
@@ -1278,7 +1277,6 @@
       <button type="submit" class="btn-primary">Submit Application</button>
     </form>
   </section>
-
 
 
   <!-- Founders Section -->
@@ -1379,6 +1377,7 @@
 </body>
 
 </html>
+
 
 
 
